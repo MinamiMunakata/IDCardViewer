@@ -1,22 +1,24 @@
 import * as React from 'react'
-import { StyleSheet, Text, View, Image } from 'react-native'
+import { StyleSheet, Text, View, Image, Button } from 'react-native'
 import { Images, Colors, Metrics } from './App/Themes'
+// same name -> use { NAME }
+// 'default' can be different name. No need to wrap {}
+import IDCard from './App/Components/IDCard'
 
 export default class App extends React.Component<{}, {}> {
+  constructor(props: {}) {
+    super(props)
+  }
+
+  showCard = () => {
+    console.log('Later networking!')
+  }
+
   render() {
     return (
       <View style={styles.container}>
-        <View>
-          <Image
-            style={{
-              height: Metrics.images.large,
-              width: Metrics.images.large,
-            }}
-            source={Images.jedi1}
-          />
-        </View>
-        <Text>Jedi</Text>
-        <Text>Male</Text>
+        <IDCard />
+        <Button title="Show me your ID card!" onPress={this.showCard} />
       </View>
     )
   }
@@ -28,11 +30,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  card: {
-    padding: Metrics.doubleBaseMargin,
-    width: Metrics.screenWidth * 0.9,
-    borderWidth: Metrics.borderWidth,
-    borderRadius: Metrics.buttonRadius,
   },
 })
