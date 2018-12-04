@@ -1,9 +1,10 @@
 import * as React from 'react'
 import { StyleSheet, Text, View, Image, Button } from 'react-native'
 import { Images, Colors, Metrics } from '../Themes'
+import { IPerson } from '../../App'
 
-export default class IDCard extends React.Component<{}, {}> {
-  constructor(props: {}) {
+export default class IDCard extends React.Component<IPerson, {}> {
+  constructor(props: IPerson) {
     super(props)
   }
 
@@ -13,8 +14,8 @@ export default class IDCard extends React.Component<{}, {}> {
         <View style={styles.mainInfoView}>
           <Image style={styles.picture} source={Images.jedi1} />
           <View style={styles.mainInfo}>
-            <Text style={{ fontWeight: 'bold' }}>Jedi</Text>
-            <Text style={{ fontWeight: '500' }}>Male</Text>
+            <Text style={{ fontWeight: 'bold' }}>{this.props.name}</Text>
+            <Text style={{ fontWeight: '500' }}>{this.props.gender}</Text>
           </View>
         </View>
         <View style={styles.rowItem}>
@@ -23,9 +24,9 @@ export default class IDCard extends React.Component<{}, {}> {
           <Text style={{ fontWeight: 'bold' }}>Weight</Text>
         </View>
         <View style={[styles.rowItem, { marginTop: 0 }]}>
-          <Text>1997</Text>
-          <Text>160</Text>
-          <Text>60</Text>
+          <Text>{this.props.birthYear}</Text>
+          <Text>{this.props.height}</Text>
+          <Text>{this.props.weight}</Text>
         </View>
         <View style={styles.rowItem}>
           <Text style={{ fontWeight: 'bold' }}>Hair Color</Text>
@@ -33,9 +34,9 @@ export default class IDCard extends React.Component<{}, {}> {
           <Text style={{ fontWeight: 'bold' }}>Skin Color</Text>
         </View>
         <View style={[styles.rowItem, { marginTop: 0 }]}>
-          <Text>Pink</Text>
-          <Text>Yellow</Text>
-          <Text>Black</Text>
+          <Text>{this.props.hairColor}</Text>
+          <Text>{this.props.eyeColor}</Text>
+          <Text>{this.props.skinColor}</Text>
         </View>
       </View>
     )

@@ -5,7 +5,23 @@ import { Images, Colors, Metrics } from './App/Themes'
 // 'default' can be different name. No need to wrap {}
 import IDCard from './App/Components/IDCard'
 
-export default class App extends React.Component<{}, {}> {
+interface IPerson {
+  name: string
+  gender: string
+  birthYear: string
+  height: string
+  weight: string
+  hairColor: string
+  eyeColor: string
+  skinColor: string
+}
+
+interface IState {
+  person: IPerson
+  buttonText: string
+}
+
+export default class App extends React.Component<{}, IState> {
   state = {
     person: {
       name: 'Unknown',
@@ -26,13 +42,21 @@ export default class App extends React.Component<{}, {}> {
 
   showCard = () => {
     console.log('Later networking!')
+    // update state =>rerender!
+    this.setState({ buttonText: 'Hello' })
+    // this.setState({
+    //   person: {
+    //     ...this.state.person,
+    //   },
+    //   buttonText: 'ID Card!',
+    // })
   }
 
   render() {
     return (
       <View style={styles.container}>
-        <IDCard />
-        <Button title="Show me your ID card!" onPress={this.showCard} />
+        <IDCard {...this.state.person} />
+        <Button title={this.state.buttonText} onPress={this.showCard} />
       </View>
     )
   }
