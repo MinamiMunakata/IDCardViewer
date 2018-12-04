@@ -14,8 +14,9 @@ export default class App extends React.Component<{}, {}> {
             }}
             source={Images.jedi1}
           />
-          <Text>Demo</Text>
         </View>
+        <Text>Jedi</Text>
+        <Text>Male</Text>
       </View>
     )
   }
@@ -27,5 +28,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  card: {
+    padding: Metrics.doubleBaseMargin,
+    width: Metrics.screenWidth * 0.9,
+    borderWidth: Metrics.borderWidth,
+    borderRadius: Metrics.buttonRadius,
   },
 })
