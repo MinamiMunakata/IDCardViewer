@@ -1,7 +1,8 @@
 import * as React from 'react'
 import { StyleSheet, Text, View, Image, Button } from 'react-native'
 import { Images, Colors, Metrics } from '../Themes'
-import { IPerson } from '../../App'
+import { IPerson } from '../Types/Person'
+import { RowItem } from './RowItem'
 
 export default class IDCard extends React.Component<IPerson, {}> {
   constructor(props: IPerson) {
@@ -9,6 +10,22 @@ export default class IDCard extends React.Component<IPerson, {}> {
   }
 
   render() {
+    const firstRow = {
+      col1: 'Birth Year',
+      col2: 'Height',
+      col3: 'Weight',
+      data1: this.props.birthYear,
+      data2: this.props.height,
+      data3: this.props.weight,
+    }
+    const secondRow = {
+      col1: 'Hair Color',
+      col2: 'Eye Color',
+      col3: 'Skin Color',
+      data1: this.props.hairColor,
+      data2: this.props.eyeColor,
+      data3: this.props.skinColor,
+    }
     return (
       <View style={styles.card}>
         <View style={styles.mainInfoView}>
@@ -18,26 +35,8 @@ export default class IDCard extends React.Component<IPerson, {}> {
             <Text style={{ fontWeight: '500' }}>{this.props.gender}</Text>
           </View>
         </View>
-        <View style={styles.rowItem}>
-          <Text style={{ fontWeight: 'bold' }}>Birth Year</Text>
-          <Text style={{ fontWeight: 'bold' }}>Height</Text>
-          <Text style={{ fontWeight: 'bold' }}>Weight</Text>
-        </View>
-        <View style={[styles.rowItem, { marginTop: 0 }]}>
-          <Text>{this.props.birthYear}</Text>
-          <Text>{this.props.height}</Text>
-          <Text>{this.props.weight}</Text>
-        </View>
-        <View style={styles.rowItem}>
-          <Text style={{ fontWeight: 'bold' }}>Hair Color</Text>
-          <Text style={{ fontWeight: 'bold' }}>Eye Color</Text>
-          <Text style={{ fontWeight: 'bold' }}>Skin Color</Text>
-        </View>
-        <View style={[styles.rowItem, { marginTop: 0 }]}>
-          <Text>{this.props.hairColor}</Text>
-          <Text>{this.props.eyeColor}</Text>
-          <Text>{this.props.skinColor}</Text>
-        </View>
+        <RowItem {...firstRow} />
+        <RowItem {...secondRow} />
       </View>
     )
   }
@@ -45,6 +44,7 @@ export default class IDCard extends React.Component<IPerson, {}> {
 
 const styles = StyleSheet.create({
   card: {
+    marginVertical: Metrics.marginVertical,
     padding: Metrics.doubleBaseMargin,
     width: Metrics.screenWidth * 0.9,
     borderWidth: Metrics.borderWidth,
