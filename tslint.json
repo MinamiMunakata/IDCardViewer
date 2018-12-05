@@ -16,5 +16,10 @@
         "member-access": [true, "no-public"],
         "no-console": false
     },
-    "rulesDirectory": []
+    "rulesDirectory": [],
+    {
+        "compilerOptions": {
+          "lib": [ "es2015" ]
+        }
+      }
 }
