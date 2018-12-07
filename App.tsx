@@ -8,17 +8,22 @@ import {
   SafeAreaView,
   ScrollView,
   ActivityIndicator,
+  FlatList,
 } from 'react-native'
 import { Images, Colors, Metrics } from './App/Themes' // Look for index.ts file and import everything.
 // same name -> use { NAME }
 // 'default' can be different name. No need to wrap {}
 import IDCard from './App/Components/IDCard'
 import { IPerson } from './App/Types/Person'
+import { people } from './App/pojo/people'
+// import { people, generatePeople, createPerson } from './App/pojo/people'
 
 interface IState {
   person: IPerson
   buttonText: string
+  // people: IPerson[]
   loading: boolean
+  // refreshing: boolean
 }
 
 export default class App extends React.Component<{}, IState> {
@@ -34,6 +39,8 @@ export default class App extends React.Component<{}, IState> {
       skinColor: 'N/A',
     },
     buttonText: 'Show me your ID Card!',
+    // people: [...people],
+    // refreshing: false,
     loading: false,
   }
 
@@ -95,6 +102,7 @@ export default class App extends React.Component<{}, IState> {
     }
     return (
       <SafeAreaView style={styles.container}>
+        {/* renderItem={({ item }) => <IDCard {...item} />} */}
         <ScrollView>
           <IDCard {...this.state.person} />
           <IDCard {...this.state.person} />

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { StyleSheet, Text, View, Image, Button } from 'react-native'
 import { Images, Colors, Metrics } from '../Themes'
-import { IPerson } from '../../App'
+import { IPerson } from '../../App/Types/Person'
 
 interface IRowProps {
   col1: string
@@ -27,7 +27,7 @@ const RowItem: React.SFC<IRowProps> = props => {
         <Text>{props.data2}</Text>
         <Text>{props.data3}</Text>
       </View>
-    </View>
+    </View> // Be able to return ONE view.
   )
 }
 
